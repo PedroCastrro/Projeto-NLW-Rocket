@@ -5,6 +5,7 @@ module.exports = {
     './index.html',
   ],
   theme: {
+    fontFamily: {'Inter, sans-serif'},
     extend: {
       backgroundImage: {
         galaxy: "url('/background-galaxy.png')",
