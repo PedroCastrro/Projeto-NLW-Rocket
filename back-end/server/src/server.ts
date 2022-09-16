@@ -47,13 +47,13 @@ app.get('/games/:id/ads', async (request, response) => {
       }
    })
 
-   return response.json(ad=> {
+   return response.json(ads.map (ad => {
       return {
-         ...ad,
+         ...ads,
          weekDays: ad.weekDays.split(',')
 
       }
-   })
+   }))
 })
 
    app.get('/ads/:id/discord', (request, response) => {
