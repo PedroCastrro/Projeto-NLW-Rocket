@@ -1,16 +1,24 @@
-import { View, Image, FlatList } from 'react-native'
+import { useEffect, useState } from 'react';
+import { Image, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import logoImg from '../../assets/games/logo-nlw-esports.png';
 
-import logoImg from '../../assets/games/logo-nlw-esports.png'
-import { GameCard } from '../../components/GameCard'
-import { Heading } from '../../components/Heading'
-import { GAMES } from '../../utils/games'
+import { GameCard, GameCardProps } from '../../components/GameCard';
+import { Heading } from '../../components/Heading';
 
-import { styles } from './styles'
+import { styles } from './styles';
 
 export function Home() {
+  const [games, setGames] = useState<GameCardProps>([]);
+
+  useEffect(() => {
+    fetch('http://172.25.192.1:3333/games')
+    .then(response => response.json())
+    .then(data => setGames(data));
+},[]);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView  style={styles.container}>
       <Image 
         source={logoImg} 
         style={styles.logo} 
@@ -22,11 +30,10 @@ export function Home() {
       />
 
       <FlatList
-        data={GAMES}
+        data={games}
         keyExtractor={(item) => item.id}
         renderItem={( item ) => (
         <GameCard 
-
         data= {item}
         
         />
@@ -36,6 +43,6 @@ export function Home() {
         horizontal
         contentContainerStyle={styles.contentList}
       />
-    </View>
+    </SafeAreaView >
   )
 }
