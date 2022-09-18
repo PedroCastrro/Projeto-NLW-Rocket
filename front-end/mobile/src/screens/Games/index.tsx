@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Text } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { Background } from '../../components/Background';
@@ -24,6 +24,12 @@ export function Games() {
   function handleGoBack(){
     navigation.goBack();
   }
+
+    async function getDiscordUser(adsId: string) {
+      fetch(`http://172.25.192.1:3333/ads/${adsId}/discord`)
+      .then(response => response.json())
+      .then(data => setDiscordDuoSelected(data.discord));
+    }
 
   useEffect(() => {
     fetch(`http://172.25.192.1:3333/games/${Games.id}/ads`)
@@ -69,7 +75,7 @@ export function Games() {
         renderItem={({ item }) => {
           <DuoCard 
           data={item} 
-          onConnect={() => {}}
+          onConnect={() => getDiscordUser(item.id)}
           />
         }}
         horizontal
@@ -84,7 +90,7 @@ export function Games() {
         
         <DuoMatch 
           visible={discordDuoSelected.length > 0}
-          discord="Piga#2323"
+          discord={discordDuoSelected}
           onClose={() => setDiscordDuoSelected('')}
         />
     </SafeAreaView>
