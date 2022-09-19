@@ -5,7 +5,7 @@
 
 Projeto-NLW-Rocket é uma aplicação full stack web e mobile construída durante a 3º edição da **Rocket seat-nwl** (#nwl-3), evento organizado pela [Rocket Seat](https://app.rocketseat.com.br "Site da Rocket Seat").
 
-A aplicação consiste em uma pesquisa de preferência de games, onde os dados são coletados no back-end da aplicação, e depois são listados no app we e no app mobile.
+A aplicação consiste em uma pesquisa de preferência de games, onde os dados são coletados no back-end da aplicação, e depois são listados no app web e no app mobile.
 
 ## Layout mobile
 ![Mobile 1](https://github.com/PedroCastrro/assets/blob/main/Mobile1.png) 
